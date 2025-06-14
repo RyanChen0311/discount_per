@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>折扣計算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>折扣計算器</h1>
+        <div class="calculator">
+            <div class="settings-section">
+                <h2>折扣規則</h2>
+                <p class="instructions">設定觸發折扣的數量。只有購買確切數量時才會應用折扣。</p>
+                <div class="discount-rule">
+                    <div class="input-group">
+                        <label>購買數量：</label>
+                        <input type="number" id="discountQty" min="1" class="small-input" placeholder="輸入數量">
+                    </div>
+                    <div class="input-group">
+                        <label>折扣百分比：</label>
+                        <input type="number" id="discountPercent" min="0" max="100" class="small-input" placeholder="輸入折扣">
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="price">商品價格 ($)：</label>
+                <input type="number" id="price" min="0" step="0.01" placeholder="輸入價格">
+            </div>
+            <div class="input-group">
+                <label for="quantity">購買數量：</label>
+                <input type="number" id="quantity" min="1" placeholder="輸入數量">
+            </div>
+            <button onclick="calculateDiscount()">計算折扣</button>
+            
+            <div class="results" id="results">
+                <div class="result-item">
+                    <span>原始總額：</span>
+                    <span id="originalTotal">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span>折扣金額：</span>
+                    <span id="discountAmount">$0.00</span>
+                </div>
+                <div class="result-item total">
+                    <span>最終價格：</span>
+                    <span id="finalPrice">$0.00</span>
+                </div>
+                <div class="discount-info" id="discountInfo">
+                    未應用折扣 - 數量不符合折扣規則
+                </div>
+            </div>
+
+            <div class="seller-section">
+                <h2>賣家視角</h2>
+                <div class="input-group">
+                    <label for="costPrice">成本價格 ($)：</label>
+                    <input type="number" id="costPrice" min="0" step="0.01" placeholder="輸入成本">
+                </div>
+                <div class="input-group">
+                    <label for="minProfit">最低利潤 %：</label>
+                    <input type="number" id="minProfit" min="20" value="20" class="small-input" placeholder="最低 20%">
+                </div>
+                <button onclick="calculateSellerProfit()">計算利潤</button>
+                
+                <div class="results" id="sellerResults">
+                    <div class="result-item">
+                        <span>總成本：</span>
+                        <span id="totalCost">$0.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>總收入：</span>
+                        <span id="totalRevenue">$0.00</span>
+                    </div>
+                    <div class="result-item">
+                        <span>利潤金額：</span>
+                        <span id="profitAmount">$0.00</span>
+                    </div>
+                    <div class="result-item total">
+                        <span>利潤率：</span>
+                        <span id="profitMargin">0%</span>
+                    </div>
+                    <div class="profit-info" id="profitInfo">
+                        輸入成本價格並點擊計算利潤
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
